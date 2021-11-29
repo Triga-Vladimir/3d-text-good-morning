@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+	height: 100vh;
+	background: #203a43;
+	overflow: hidden;
+	background: radial-gradient(ellipse at 50% 80%, #203a43 0%, #000000 100%);
+}
+
+body * {
+	transform-style: preserve-3d;
+	box-sizing: border-box;
+	outline: none;
+	font-family: "Bebas Neue", Arial Helvetica, serif;
+}
+
+.content {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	perspective-origin: center;
+	position: absolute;
+	z-index: -1;
+	transition: all 1s ease 0s;
+	left: 0;
+	top: 0;
+	perspective: 200vmin;
+}
+
+.room {
+	--height: 100;
+	--width: 100;
+	--depth: 100;
+	--hue: 200;
+	--light: 10%;
+	height: calc(var(--height) * 1vmin);
+	width: calc(var(--width) * 1vmin);
+	transform: rotateX(154deg) rotateY(-70deg) translateY(75vmin)
+		translateX(-35vmin) translateZ(10vmin);
+	transform-origin: right center;
+	animation: room-view 5s ease-in-out 0s infinite alternate;
+}
+
+.wall,
+.morning,
+.and,
+.good {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 100%;
+	width: 100%;
+}
+
+.wall:nth-of-type(1) {
+	transform: translate3d(-50%, -50%, calc(var(--depth) * 0.5vmin));
+	background: radial-gradient(
+			circle at 100% 0%,
+			hsl(var(--hue), 60%, calc(var(--light) * 3.5)) 0%,
+			#fff0 50%
+		),
+		hsl(var(--hue), 60%, calc(var(--light) * 2.5));
+}
+
+.wall:nth-of-type(2) {
+	width: calc(var(--depth) * 1vmin);
+	transform: translate(-50%, -50%) rotateY(90deg)
+		translate3d(0, 0, calc(var(--width) * 0.5vmin));
+	background: radial-gradient(
+			circle at 0% 0%,
+			hsl(var(--hue), 60%, calc(var(--light) * 4)) 0%,
+			#fff0 50%
+		),
+		hsl(var(--hue), 60%, calc(var(--light) * 3));
+}
+
+.wall:nth-of-type(3) {
+	height: calc(var(--depth) * 1vmin);
+	transform: translate(-50%, -50%) rotateX(90deg)
+		translate3d(0, 0, calc(var(--height) * 0.5vmin));
+	background: radial-gradient(
+			circle at 100% 100%,
+			hsl(var(--hue), 60%, calc(var(--light) * 4.5)) 0%,
+			#fff0 50%
+		),
+		hsl(var(--hue), 60%, calc(var(--light) * 3.5));
+	box-shadow: 0 0 0 5vmin hsl(var(--hue), 60%, calc(var(--light) * 3.5));
+}
+
+.morning {
+	width: calc(var(--depth) * 1vmin);
+	transform: translate(-50%, -50%) rotateY(270deg) rotatez(180deg)
+		translate3d(0, 0, -15vmin);
+	text-align: center;
+	display: flex;
+	justify-content: flex-start;
+	text-transform: uppercase;
+	line-height: 8.25vmin;
+	font-size: 13vmin;
+	flex-wrap: wrap;
+	align-content: flex-end;
+	padding-left: 10vmin;
+	color: #ffc107;
+	width: 100%;
+	text-shadow: 1px 1px 0 #8f550080, -1px 1px 0 #8f550080, -1px -1px 0 #8f550080,
+		1px -1px 0 #8f550080, 1px -1px 0 #f19102, 2px -2px 0 #d98201,
+		3px -3px 0 #bb7001, 4px -4px 0 #a96500, 5px -5px 0 #8f5500;
+}
+
+.morning:before,
+.morning:after {
+	content: "GOOD MORNING !";
+	position: absolute;
+	transform: rotateX(90deg) scaleY(10) skewX(-30deg) translateY(0.05vmin);
+	transform-style: preserve-3d;
+	transform-origin: center bottom;
+	left: 0;
+	bottom: 0;
+	padding-left: 10vmin;
+	color: #0000;
+	text-shadow: none;
+	opacity: 0.65;
+	text-shadow: 0 0 2px #0008;
+	animation: shadow-floor 5s ease-in-out 0s infinite alternate;
+}
+
+.morning:after {
+	transform: rotateX(0deg) scaleY(1.5) skewX(0deg) translateZ(-35vmin)
+		translateY(3.5vmin) translateX(2.1vmin) rotateZ(-1.5deg);
+	animation: shadow-wall 5s cubic-bezier(0.42, 0, 0.66, 0.96) 0s infinite
+		alternate;
+	opacity: 0.6;
+}
+
+.and {
+	height: 6vmin;
+	transform: translate(-50%, -50%) rotateX(-90deg) rotateZ(90deg)
+		translate3d(-7vmin, -7vmin, calc(var(--height) * -0.5vmin));
+	text-align: center;
+	font-size: 5vmin;
+	color: #004c72;
+	text-shadow: 1px 1px 1px #fff3, 0px 0px 1px #003b58;
+}
+
+.good {
+	height: 30vmin;
+	transform: translate(-50%, -50%) rotateX(-90deg) rotatez(-270deg)
+		translate3d(-4vmin, 35vmin, calc(var(--height) * -0.625vmin));
+	background: #fff0;
+	width: 45%;
+	position: absolute;
+	text-align: left;
+	transform-origin: center bottom;
+	font-size: 8vmin;
+	text-shadow: 1px 1px 1px #78a923, 1px 1px 1px #6fa118, 1px 2px 1px #669712,
+		1px 3px 1px #5d8d0c, 2px 4px 1px #517c07, 1px 3px 1px #487003,
+		2px 4px 1px #3e6200, 2px 4px 1px #0004, 2px 4px 1px #000;
+	color: #96d32c;
+	animation: floor-3d 5s ease-in-out 0s infinite alternate;
+	transition: all 5s ease-in-out 0s;
+}
+
+.good span {
+	font-size: 40%;
+	position: relative;
+}
+
+.evening {
+	transform: translate(-50%, -50%) rotateX(-90deg) rotatez(-270deg)
+		translate3d(-4vmin, 45vmin, calc(var(--height) * -0.625vmin));
+}
+
+.night {
+	transform: translate(-50%, -50%) rotateX(-90deg) rotatez(-270deg)
+		translate3d(-4vmin, 55vmin, calc(var(--height) * -0.625vmin));
+}
+
+.good:before {
+	content: "Good Afternoon,";
+	position: absolute;
+	color: #fff0;
+	transform: translateX(3px) translateZ(-1px) translateY(15px) scaleY(4.5)
+		skewX(0deg);
+	text-shadow: 0 0 3px #00000050, 0 0 1px #00000030;
+	opacity: 0.75;
+	animation: shadow-floor2 5s ease-in-out 0s infinite alternate;
+	height: 1.5vmin;
+	overflow: hidden;
+	line-height: 8vmin;
+	transform-origin: center bottom;
+}
+
+.evening:before {
+	content: "Good Evening \00A0 \2009 ";
+}
+
+.night:before {
+	content: "Good Night !";
+}
+
+.good span:before {
+	content: "AND";
+	position: absolute;
+	color: #fff0;
+	transform: translateX(3px) translateZ(-1px) translateY(15px) scaleY(3.5)
+		skewX(-10deg);
+	text-shadow: 0 0 3px #00000050, 0 0 1px #00000030;
+	z-index: -1;
+	opacity: 0.75;
+	animation: shadow-and 5s ease-in-out 0s infinite alternate;
+	height: 1vmin;
+	overflow: hidden;
+	line-height: 3vmin;
+	transform-origin: center bottom;
+	bottom: 3vmin;
+}
+
+@keyframes shadow-wall {
+	0% {
+		transform: rotateX(0deg) scaleY(1.5) skewX(0deg) translateZ(-35vmin)
+			translateY(3.5vmin) translateX(2.1vmin) rotateZ(-1.5deg);
+	}
+	100% {
+		transform: rotateX(0deg) scaleY(1.5) skewX(0deg) translateZ(-35vmin)
+			translateY(3.5vmin) translateX(-4.25vmin) rotateZ(0deg);
+	}
+}
+
+@keyframes shadow-floor {
+	0% {
+		transform: rotateX(90deg) scaleY(10) skewX(-30deg) translateY(0.05vmin);
+	}
+	100% {
+		transform: rotateX(90deg) scaleY(10) skewX(50deg) translateY(0.05vmin);
+	}
+}
+
+@keyframes shadow-floor2 {
+	0% {
+		transform: translateX(1px) translateZ(-1px) translateY(15px) scaleY(4.5)
+			skewX(-25deg);
+	}
+	100% {
+		transform: translateX(3px) translateZ(-1px) translateY(15px) scaleY(4.5)
+			skewX(0deg);
+	}
+}
+
+@keyframes shadow-and {
+	0% {
+		transform: translateX(3px) translateZ(-1px) translateY(15px) scaleY(3.5)
+			skewX(-10deg);
+	}
+	100% {
+		transform: translateX(3px) translateZ(-1px) translateY(15px) scaleY(3.5)
+			skewX(20deg);
+	}
+}
+
+@keyframes room-view {
+	0% {
+		transform: rotateX(154deg) rotateY(-68deg) translateY(75vmin)
+			translateX(-35vmin) translateZ(10vmin);
+	}
+	100% {
+		transform: rotateX(154deg) rotateY(-62deg) translateY(75vmin)
+			translateX(-35vmin) translateZ(10vmin);
+	}
+}
+
+@keyframes floor-3d {
+	0% {
+		text-shadow: 1px 1px 1px #78a923, 1px 1px 1px #6fa118, 1px 2px 1px #669712,
+			1px 3px 1px #5d8d0c, 2px 4px 1px #517c07, 1px 3px 1px #487003,
+			2px 4px 1px #3e6200, 2px 4px 1px #0004, 2px 4px 1px #000;
+	}
+	100% {
+		text-shadow: 1px 1px 1px #78a923, 1px 2px 1px #6fa118, 2px 3px 1px #669712,
+			2px 4px 1px #5d8d0c, 3px 5px 1px #517c07, 3px 6px 1px #487003,
+			4px 7px 1px #3e6200, 5px 8px 1px #0004, 4px 7px 1px #000;
+	}
+}
